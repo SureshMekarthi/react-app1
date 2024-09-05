@@ -4,6 +4,6 @@ import ListGroup from "./components/ListGroup";
 import Message from "./Message";
 
 function App() {
-  return<div><Button></Button></div>
+  return<div><Button>my button</Button></div>
 }
 export default App;

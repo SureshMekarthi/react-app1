@@ -1,9 +1,13 @@
 import React from 'react'
 
-function Button() {
+interface Props{
+    children: string
+}
+
+function Button({children}:Props) {
   return (
     <>
-    <button type="button" className="btn btn-primary">Primary</button>
+    <button type="button" className='$"btn btn-primary"'>{children}</button>
     </>
   )
 }
