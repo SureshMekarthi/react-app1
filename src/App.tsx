@@ -8,7 +8,9 @@ function App() {
   const [alertvisibility, setalertVisibility] = useState(false);
   return (
     <div>
-      <Alert>Alert</Alert>
+      {alertvisibility && (
+        <Alert onClick={() => setalertVisibility(false)}>Alert</Alert>
+      )}
       <Button onClick={() => setalertVisibility(true)}>my button</Button>
     </div>
   );
