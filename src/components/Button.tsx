@@ -1,17 +1,20 @@
-import React from 'react'
+import styles from "./Button.module.css";
 
-interface Props{
-    children: string;
-    color?:'primary'|'secondary'|'danger';
-    onClick:()=>void;
+interface Props {
+  children: string;
+  color?: "primary" | "secondary" | "danger";
+  onClick: () => void;
 }
 
-function Button({children, color="primary", onClick}:Props) {
+function Button({ children, color = "primary", onClick }: Props) {
   return (
-    <>
-    <button type="button" className={"btn btn-"+ color} onClick={onClick}>{children}</button>
-    </>
-  )
+    <button
+      className={[styles.btn, styles.btnPrimary].join(" ")}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
 }
 
-export default Button
+export default Button;

@@ -1,16 +1,8 @@
-import "./App.css";
-import ListGroup from "./components/ListGroup";
-import Message from "./Message";
-
+import Button from "./components/Button";
 function App() {
-  const items = ["New York", "Los Angleles", "San Francisco"];
   return (
     <div>
-      <ListGroup
-        heading="Cities"
-        items={items}
-        onSelectItem={() => console.log("clicked")}
-      ></ListGroup>
+      <Button onClick={() => console.log("clicked")}>Hello</Button>
     </div>
   );
 }
