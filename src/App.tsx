@@ -1,8 +1,9 @@
-import Button from "./components/Button";
+import { useState } from "react";
+import Like from "./components/ListGroup/Like";
 function App() {
   return (
     <div>
-      <Button onClick={() => console.log("clicked")}>Hello</Button>
+      <Like onClick={() => console.log("Hello")}>Hello</Like>
     </div>
   );
 }
