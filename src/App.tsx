@@ -1,9 +1,11 @@
-import { useState } from "react";
-import Like from "./components/ListGroup/Like";
+import Message from "./components/Message";
+
 function App() {
   return (
     <div>
-      <Like onClick={() => console.log("Hello")}>Hello</Like>
+      <Message></Message>
+      <Message></Message>
+      <Message></Message>
     </div>
   );
 }
