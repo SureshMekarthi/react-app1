@@ -3,15 +3,16 @@ import Message from "./components/Message";
 
 function App() {
   const [drink, setDrink] = useState({
-    tittle: "Americano",
+    title: "Americano",
     price: 5,
   });
   const handleClick = () => {
-    drink.price = 6;
+    setDrink({ ...drink, price: 6 });
   };
 
   return (
     <div>
+      {drink.price}
       <button onClick={handleClick}> Click me</button>
     </div>
   );
