@@ -6,13 +6,13 @@ interface Props {
 function Cart({ cartItems, onClick }: Props) {
   return (
     <>
-      <div>Cart</div>;
+      <div>Cart</div>
       <ul>
         {cartItems.map((item) => (
           <li key={item}>{item}</li>
         ))}
       </ul>
-      <button onClick={onClick}></button>
+      <button onClick={onClick}>Clear</button>
     </>
   );
 }
