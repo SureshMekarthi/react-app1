@@ -2,20 +2,20 @@ import { Immer } from "immer";
 import { useState } from "react";
 
 function App() {
-  const [game, setGame] = useState({
-    id: 1,
-    player: {
-      name: "John",
-    },
+  const [pizza, setPizza] = useState({
+    name: "Spicy Pepperoni",
+    toppings: ["Mushroom"],
   });
-
   const handleClick = () => {
-    setGame({ ...game, player: { ...game.player, name: "Suresh" } });
+    setPizza({ ...pizza, toppings: [...pizza.toppings, "Chicken"] });
   };
   return (
-    <div>
-      <button onClick={handleClick}>Click Me</button>
-    </div>
+    <>
+      <div>
+        <button onClick={handleClick}>Click Me</button>
+      </div>
+      <ul></ul>
+    </>
   );
 }
 export default App;
