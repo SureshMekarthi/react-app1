@@ -1,13 +1,28 @@
-import { Immer } from "immer";
+import produce, { Immer } from "immer";
 import { useState } from "react";
 
 function App() {
-  const [pizza, setPizza] = useState({
-    name: "Spicy Pepperoni",
-    toppings: ["Mushroom"],
+  const [cart, setCart] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "Product 1", quantity: 1 },
+      { id: 2, title: "product 2", quantity: 1 },
+    ],
   });
   const handleClick = () => {
-    setPizza({ ...pizza, toppings: [...pizza.toppings, "Chicken"] });
+    setCart({
+      ...cart,
+      items: cart.items.map((item) =>
+        item.id === 1 ? { ...item, quantity: item.quantity + 2 } : item
+      ),
+    });
+
+    // setCart(
+    //   produce((draft) => {
+    //     const result = draft.items.find((item) => item.id === 1);
+    //     if (result) result.quantity = 2;
+    //   })
+    // );
   };
   return (
     <>
