@@ -5,7 +5,11 @@ import ExpandableText from "./components/ExpandableText";
 function App() {
   return (
     <div>
-      <ExpandableText></ExpandableText>
+      <ExpandableText maxChars={10}>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi in
+        ea nulla. Possimus vitae ullam dolore odit deleniti optio beatae porro
+        id vero, quisquam natus at vel similique est suscipit!
+      </ExpandableText>
     </div>
   );
 }
