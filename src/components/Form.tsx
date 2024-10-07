@@ -8,6 +8,11 @@ function Form() {
           Name
         </label>
         <input id="name" type="text" className="from-control"></input>
+
+        <label htmlFor="age" className="form-label">
+          Age
+        </label>
+        <input id="age" type="number" className="from-control"></input>
       </div>
     </form>
   );
