@@ -14,6 +14,9 @@ function Form() {
         </label>
         <input id="age" type="number" className="from-control"></input>
       </div>
+      <button className="btn btn-primary" type="submit">
+        submit
+      </button>
     </form>
   );
 }
