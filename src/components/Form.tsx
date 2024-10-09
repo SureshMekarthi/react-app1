@@ -33,6 +33,7 @@ const Form = () => {
           onChange={(event) =>
             setPerson({ ...person, age: parseInt(event.target.value) })
           }
+          value={person.age}
           id="age"
           type="number"
           className="from-control"
