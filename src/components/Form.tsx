@@ -1,18 +1,20 @@
 import React, { FormEvent, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 
 const Form = () => {
-  const { register } = useForm();
-  console.log(register("name"));
+  const { register, handleSubmit, formState } = useForm();
+  console.log(formState.errors);
+
+  const onSubmit = (data: FieldValues) => console.log(data);
 
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">
           Name
         </label>
         <input
-          {...register("age")}
+          {...register("name", { required: true, minLength: 3 })}
           id="name"
           type="text"
           className="from-control"
