@@ -1,12 +1,20 @@
-import React, { FormEvent, useRef, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  name: z.string().min(3),
+  age: z.number().min(18),
+});
+
+type FormData = z.infer<typeof schema>;
 
 const Form = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (data: FieldValues) => console.log(data);
 
@@ -17,17 +25,13 @@ const Form = () => {
           Name
         </label>
         <input
-          {...register("name", { required: true, minLength: 3 })}
+          {...register("name")}
           id="name"
           type="text"
           className="from-control"
         ></input>
-        {errors.name?.type === "required" && (
-          <p className="text-danger">the name field is required</p>
-        )}
-        {errors.name?.type === "minLength" && (
-          <p>the name must be in min lenth</p>
-        )}
+
+        {errors.name && <p className="text-danger">{errors.name.message}</p>}
         <label htmlFor="age" className="form-label">
           Age
         </label>
@@ -37,6 +41,7 @@ const Form = () => {
           type="number"
           className="from-control"
         ></input>
+        {errors.age && <p className="text-danger">{errors.age.message}</p>}
       </div>
       <button className="btn btn-primary" type="submit">
         submit
