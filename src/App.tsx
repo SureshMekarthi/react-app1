@@ -24,7 +24,7 @@ function App() {
         ></ExpenseFilter>
       </div>
       <ExpenseList
-        expenses={expenses}
+        expenses={visibleExpenses}
         onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
       ></ExpenseList>
     </div>
