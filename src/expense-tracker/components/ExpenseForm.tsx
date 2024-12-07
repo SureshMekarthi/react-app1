@@ -3,21 +3,40 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import categories from "../categories";
+import Message from "../../components/Message";
+
+interface Props {
+  onSubmit: (data: ExpenseFormData) => void;
+}
 const schema = z.object({
-  description: z.string().min(3).max(50),
-  amount: z.number().min(0.01).max(100_000),
-  category: z.enum(categories),
+  description: z
+    .string()
+    .min(3, { message: "description should be at least 3" })
+    .max(50),
+  amount: z
+    .number({ invalid_type_error: "Amount is required" })
+    .min(0.01)
+    .max(100_000),
+  category: z.enum(categories, {
+    errorMap: () => ({ message: "Category is requiresd" }),
+  }),
 });
 
 type ExpenseFormData = z.infer<typeof schema>;
-function ExpenseForm() {
+function ExpenseForm({ onSubmit }: Props) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ExpenseFormData>({ resolver: zodResolver(schema) });
   return (
-    <form>
+    <form
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        reset();
+      })}
+    >
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description
@@ -35,7 +54,7 @@ function ExpenseForm() {
           Amount
         </label>
         <input
-          {...register("amount")}
+          {...register("amount", { valueAsNumber: true })}
           id="amount"
           type="text"
           className="form-control"
